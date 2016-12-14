@@ -1,0 +1,21 @@
+{
+  "name": "newNavIndex",
+  "authors": [
+    "dulei <564779666@qq.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "highcharts":"^5.0.6"
+  }
+}
