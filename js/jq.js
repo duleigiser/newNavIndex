@@ -1,7 +1,4 @@
-if (!window.location.origin) {
-    window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
-}
-var ctx = window.location.origin;
+var ctx = _ctx();
 var colorArr1 = ["red","red","red"];
 var colorArr2 = ["red","red","red"];
 marquee();
@@ -78,36 +75,7 @@ function prearData(data, columns, table,diff) {
 	return htmlArray.join('');
 }
 function getColumnValue(table, column, columnValue) {
-		
-	if (table == 'yujingTable'||table=='yjtzd') {
-		if (column == 'W_LEVEL') {
-			if (columnValue == 0) {
-				columnValue = "一般预警";
-			} else if (columnValue == 1) {
-				columnValue = "严重预警";
-			}
-
-		} else if (column == 'AUDIT_STATUS') {
-			columnValue = getAudit_Status(columnValue);
-		} else if (column == 'W_DATE') {
-			columnValue = columnValue.split(" ")[0];
-		}else if(column=='R'){
-			if (columnValue == 0) {
-				columnValue = "一般预警";
-			} else if (columnValue == 1||columnValue == 2) {
-				columnValue = "严重预警";
-			}
-		}
-
-	}else if(table == "jianduTable"||table == "JTjianduTable"){
-		if (column == 'CREATE_DATE') {
-			columnValue = columnValue.split(" ")[0];
-		}
-	}else if(table == "jianduzhixingTable"){
-		if (column == 'CREATE_DATE') {
-			columnValue = columnValue.split(" ")[0];
-		}
-	}else if(table == "baojingTable"){
+	if(table == "baojingTable"){
 		if (column == 'W_LEVEL') {
 			switch (columnValue) {
 			case '1':
@@ -127,26 +95,7 @@ function getColumnValue(table, column, columnValue) {
 				break;
 			}
 		}
-	}else if(table == "zongjieTable"){
-		if (column == 'CREATE_DATE') {
-			columnValue = columnValue.split(" ")[0];
-		}
-	}else if(table == 'baojingTable' || table == 'JTbaojing'){
-		if(column =='W_DATE'){
-
-			/*columnValue = columnValue.replace(/\s/g,"&#13;")*/
-
-			
-		}
-	}else if(table == "table_5" || table == 'ycqktable' || table == "JTycqk"|| table =="JTjzqt"){
-		if(column == "g_id"||column =="G_ID" || column == "UNIT_ID"){
-			if(Number(columnValue)){
-				columnValue = "#"+columnValue;
-			}
-		}
-
 	}
-
 	return columnValue;
 }
 if (!window.location.origin) {
