@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+  
+    <link rel="stylesheet" type="text/css" href="js/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="top">
+            <span class="time"></span>
+            <div>
+                <div class="scrollText">
+                    <ul class="content">
+                        <li><em>岱海发电</em><em>日发电量最高 5000万kWh</em><em>2016-10-21</em><em>月发电量最高 16.83亿kWh</em>2016-10</li>
+                        <li><em>宁东发电</em><em>日发电量最高 3000万kWh</em><em>2016-7-10</em><em>月发电量最高 7.63亿kWh</em>2016-8</li>
+                        <li><em>京桥发电</em><em>日发电量最高 1000万kWh</em><em>2016-9-15</em><em>月发电量最高 3.63亿kWh</em>2016-9</li>
+                    </ul>
+                </div>
+            </div>
+            <select name="" id="org">
+                <option value="">京能集团</option>
+                <option value="">岱海发电</option>
+                <option value="">宁东发电</option>
+                <option value="" selected>京桥热电</option>
+            </select>
+        </div>
+        <div class="itemBox">
+            <div class="item w65 h293" id="table1">
+                <div class="unitStateChart">
+                    <p class="topText">机组连续运行 #1 <a href="#">320天</a> #2 <a href="#">120天</a> #3 <a href="#">390天</a></p>
+                    <div class="pieChart" id="container">
+                    </div>
+                    <p class="bottomText">总装机容量 838MW<span style="margin-left:40px">当年故障停机</span><a href="#" style="margin-left:5px;">0次</a></p>
+                    <div class="stateText">
+                        <div class="unit unit1"><span>#1机组</span><br><a href="#" class="loadPercentage">100.00%</a><br><a href="#" class="load">298.00MW</a></div>
+                        <div class="unit unit2"><a href="#" class="loadPercentage">100.00%</a><br><a href="#" class="load">242.00MW</a><br><span>#3机组</span></div>
+                        <div class="unit unit3"><span>#2机组</span><br><a href="#" class="loadPercentage">100.00%</a><br><a href="#" class="load">298.00MW</a></div>
+                    </div>
+                    <div class="totalVol">
+                        <a href="#">100.00%</a><br><a href="">838.00MW</a>
+                    </div>
+                    <div class="circle"></div>
+                </div>
+                <div class="unitTable">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>昨日发电量</td>
+                                <td></td>
+                                <td>月度计划发电量</td>
+                                <td></td>
+                                <td>月度累计发电量</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>年计划发电量</td>
+                                <td></td>
+                                <td>年累计发电量</td>
+                                <td></td>
+                                <td>年发电量完成率</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">发电厂用电率</a></td>
+                                <td></td>
+                                <td><a href="#">发电厂用电率年累计</a></td>
+                                <td></td>
+                                <td><a href="#">供电气耗</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">综合厂用电率</a></td>
+                                <td></td>
+                                <td><a href="#">综合厂用电率年累计</a></td>
+                                <td></td>
+                                <td><a href="#">供电气耗年累计</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">NOx排放浓度</a></td>
+                                <td></td>
+                                <td><a href="#">NOx排放年累计</a></td>
+                                <td></td>
+                                <td><a href="#">发电气耗</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><a href="#">硫化物排放浓度</a></td>
+                                <td></td>
+                                <td><a href="#">硫化物排放年累计</a></td>
+                                <td></td>
+                                <td><a href="#">发电气耗年累计</a></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="item w32 h293" id="table2">
+                <ul class="navTab">
+                    <li class="active">
+                        <a href="#zbpm" data-toggle="tab">指标排名</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="zbpm">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>技术指标</td>
+                                    <td>当月平均值</td>
+                                    <td>当月实时排名</td>
+                                    <td>上季度平均值</td>
+                                    <td>上季度排名</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>综合供电气耗(g/kW.h)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>发电厂用电率(%)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>综合厂用电率(%)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>机组负荷率<br>(%)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>补水率<br>(%)</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="item h436" id="table3">
+                <ul class="navTab">
+                    <li class="active">
+                        <a href="#jzsj" data-toggle="tab">测点报警</a>
+                    </li>
+                    <a href="#" class="more">更多&gt;</a>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane fade in active" id="jzsj">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="pointId">测点编码</td>
+                                    <td class="pointName">测点描述</td>
+                                    <td class="alarmVal">报警值</td>
+                                    <td class="alarmLevel">报警等级</td>
+                                    <td class="startTime">开始时间</td>
+                                    <td class="length">报警时长</td>
+                                    <td class="subject">所属专业</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>22</td>
+                                    <td>dfdf</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="js/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="testmain.js"></script>
+</body>
+</html>

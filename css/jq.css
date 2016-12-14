@@ -1,0 +1,262 @@
+body, ul, li, select {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #F1F4F9;
+}
+select {
+    width: 120px;
+    height: 26px;
+    float: right;
+    background: url("./icon.png") top right no-repeat;
+    margin-right: 16px;
+    margin-top: 2px;
+    /*去掉默认三角样式*/
+    -webkit-appearance: none;
+}
+.top {
+    height: 30px;
+    padding: 1px;
+}
+.time {
+    height: 28px;
+    width: 300px;
+    float: left;
+    line-height: 28px;
+    font-size: 20px;
+    color: #666;
+    font-family: "微软雅黑";
+    padding-left: 28px;
+}
+.scrollText {
+    height: 28px;
+    float: left;
+    overflow: hidden;
+    line-height: 28px;
+}
+.scrollText em {
+    font-style: normal;
+    margin-right: 20px;
+}
+.content li {
+    font-size: 16px;
+    font-family: "微软雅黑";
+    color: #ff0100;
+}
+.itemBox .item {
+    float: left;
+    border: 1px solid #ccc;
+    margin-left: 1%;
+    margin-top: 0.4%;
+    background-color: #fff;
+}
+.itemBox .w65 {
+    width: 65%;
+}
+.itemBox .w32 {
+    width: 32%;
+}
+.itemBox .h293 {
+    height: 293px;
+}
+.itemBox .h436 {
+    height: 436px;
+}
+.itemBox .h213 {
+    height: 213px;
+}
+.item ul {
+    background-color: #f1f1f1;
+    color: #177eda;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: bold;
+}
+.item ul .more {
+    font-size: 12px;
+    font-weight: normal;
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+.item ul li {
+    padding: 0px 10px;
+    list-style-type: none;
+    float: left;
+} 
+.item ul .active {
+    background-color: #fff;
+}
+.item ul li a {
+    text-decoration: none;
+}
+.item .tab-content {
+    padding: 10px 2% 0 2%;
+}
+.tab-content table {
+    border-collapse: separate;
+    border-spacing: 1px;
+    width: 100%;
+    font-family: "微软雅黑"；
+}
+.tab-content thead td {
+    height: 33px;
+    line-height: 33px;
+    margin: 0;
+    padding: 0 5px;
+    background-color: #f1f1f1;
+    text-align: center;
+    color: #66a2e0;
+}
+#table1 {
+    padding-top: 0.4%;
+    padding-right: 12px;
+}
+#table1 .unitStateChart {
+    width: 36%;
+    float: left;
+    position: relative;
+    margin-right: 7px;
+    margin-left: -7px;
+    height: 270px;
+    padding: 0 10px 0 10px;
+}
+@media only screen and (min-width:1600px) {
+    #table1 .unitStateChart {
+        width: 32%;
+    }
+    #table1 .unitTable {
+        width: 66%;
+    }
+}
+.topText, .bottomText {
+    font-size: 12px;
+    font-family: "Microsoft Yahei";
+    margin-left: 30px;
+}
+.unitStateChart .unit a, .totalVol a {
+    color: #000;
+    font-weight: bold;
+    font-size: 12px;
+}
+.unitStateChart p a {
+    color: red;
+}
+.unitTable {
+    float: left;
+    width: 62%;
+    padding-top: 10px;
+}
+#table1 .unitTable table {
+    border-spacing: 1px;
+    border-collapse: separate;
+    font-family: "微软雅黑";
+    width: 100%;
+}
+#table1 .unitTable table tbody tr:nth-child(odd) {
+    background-color: #f1f1f1;
+}
+#table1 .unitTable tbody td {
+    height: 35px;
+    font-size: 12px;
+    width: 16%;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
+}
+#table1 .unitTable tbody td a {
+    display: block;
+    color: #000;
+}
+#table1 .unitStateChart .pieChart {
+    width: 212px;
+    height: 212px;
+    margin-left: 60px;
+}
+.unitStateChart .stateText {
+    position: absolute;
+    top: 30px;
+    left: 184px;
+    width: 300px;
+    height: 209px;
+    margin-left: -98px;
+    margin-top: 10px;
+}
+.unitStateChart .stateText .unit1 {
+    margin-top: 5px;
+    float: left;
+}
+.unitStateChart .stateText .unit2 {
+    float: left;
+    margin-top: 125px;
+    text-align: center;
+}
+.unitStateChart .stateText .unit3 {
+    margin-top: 5px;
+    float: left;
+    text-align: right;
+}
+.unitStateChart .stateText .unit span {
+    display: inline-block;
+    font-size: 12px;
+}
+.unitStateChart .stateText .unit1 span {
+    margin-bottom: 5px;
+    margin-left: -5px;
+}
+.unitStateChart .stateText .unit2 span {
+    margin-top: 5px;
+}
+.unitStateChart .stateText .unit3 span {
+    margin-bottom: 5px;
+    margin-right: -5px;
+}
+.unitStateChart .totalVol {
+    position: absolute;
+    top: 104px;
+    left: 143px;
+}
+.unitStateChart .circle {
+    position: absolute;
+    width: 179px;
+    height: 179px;
+    border: 1px solid silver;
+    border-radius: 50%;
+    top: 34px;
+    left: 86px;
+}
+#table2 .tab-content thead td {
+    font-size: 12px;
+    width: 20%;
+    padding: 0 4px;
+}
+#table2 .tab-content tbody td:first-child {
+    background-color: #f1f1f1;
+    font-size: 12px;
+    height: 39px;
+}
+#table3 {
+    width: 98%;
+}
+#table3 tbody td {
+    text-align: center;
+    padding: 0 5px;
+    height: 33px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.pointId, .pointName {
+    width: 20%;
+}
+.alarmVal, .alarmLevel {
+    width: 10%;
+}
+.startTime .length {
+    width: 15%;
+}
+.subject {
+    width: 10%;
+}
