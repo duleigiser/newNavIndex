@@ -149,3 +149,168 @@ function getColumnValue(table, column, columnValue) {
 
 	return columnValue;
 }
+
+if (!window.location.origin) {
+    window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
+}
+var ctx = window.location.origin;
+var moreURL = ctx + "jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
+$("#table3 .more").prop("href",moreURL);
+var url = ctx + "jsjd/main?xwl=23WPD5TO7GWR";
+var _scrollHeight = $(".content>li").height();
+//显示时间
+setInterval(function () {
+    var timeStr = showLocale();
+    $(".time").html(timeStr);
+},1000);
+//文字向上滚动
+setInterval(function () {
+    $(".content").animate({
+        marginTop: "-" + _scrollHeight + "px"
+    },500,function () {
+        $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
+    });
+},3000);
+//函数体
+function showLocale() {
+    var myDate = new Date();
+    var year = myDate.getFullYear();
+    var month = myDate.getMonth()+1;
+    var day = myDate.getDate();
+    var hour = myDate.getHours();
+    var minute = myDate.getMinutes();
+    var second = myDate.getSeconds();
+    if (month<10) {
+        month = "0" + month;
+    }
+    if (day<10) {
+        day = "0" + day;
+    }
+    if (hour<10) {
+        hour = "0" + hour;
+    }
+    if (minute<10) {
+        minute = "0" + minute;
+    }
+    if (second<10) {
+        second = "0" + second;
+    }
+    var str = year + "年" + month + "月" + day + "日" + " " + hour + ":" + minute + ":" + second;
+    return str;
+}
+$(function () {
+    var cha = new Highcharts.Chart({
+        chart: {
+            //将图表放进id为container的容器内
+            renderTo: 'container', 
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,
+            plotShadow: false
+        },
+        //去掉Highcharts.com的水印
+        credits: {
+            enabled: false
+        },
+        colors:  ["red","red","red"],
+        
+        //去掉导出的按钮
+        exporting: {
+            buttons: {
+                contextButton: {
+                    enabled: false
+                }
+            }
+        },
+        /*labels: {
+            style: {
+                "fontFamily": "微软雅黑",
+                "fontSize": "12px",
+                "fontWeight": "normal",
+                "textShadow": "none",
+                "color":"#000"
+            },
+            items: [
+                {
+                    html: "#1机组",
+                    style: {
+                        "left": '200px',
+                        "top": '10px'
+                    },
+                },
+                {
+                    html: "#2机组",
+                    style: {
+                        left: "125px",
+                        top: "170px"
+                    }
+                },
+                {
+                    html: "#3机组",
+                    style: {
+                        left: "50px",
+                        top: "10px"
+                    }
+                }
+            ]
+        },*/
+        title: {
+            text: '',
+            align: 'center',
+            verticalAlign: 'middle',
+            y: 50
+        },
+        tooltip: {
+            pointFormatter: function() {
+                //this表示鼠标悬浮选中的机组
+                return  this.x+'负荷: <b>'+this.y+'</b>'
+            }
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: false,
+                    distance: -50,
+                    style: {
+                        fontWeight: 'bold',
+                        color: 'white',
+                        textShadow: '0px 1px 2px black'
+                    }
+                },
+                startAngle: 0,
+                endAngle: 360,
+                center: ['50%', '45%']
+            }
+        },
+        series: [{
+            type: 'pie',
+            /*dataLabels: {
+                style: {
+                    "fontFamily": "微软雅黑",
+                    "fontSize": "12px",
+                    "fontWeight": "normal",
+                    "textShadow": "none",
+                    "color":"#000"
+                },
+                y: 15,
+                padding: 0,
+                distance: 0
+            },*/
+            name: '',
+            innerSize: '50%',
+            data: [
+                ['#1', 33.3],
+                ['#2', 33.3],
+                ['#3', 33.3],
+                /*{
+                    name: 'Others',
+                    y: 0.1,
+                    dataLabels: {
+                        enabled: false
+                    }
+                }*/
+            ]
+        }]
+    });
+});
+
+
