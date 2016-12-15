@@ -155,7 +155,8 @@ select {
     font-family: "微软雅黑";
     width: 100%;
 }
-#table1 .unitTable table tbody tr:nth-child(odd) {
+#table1 .unitTable table tbody tr:nth-child(odd), #table2 table tbody tr:nth-child(even),
+#table3 table tbody tr:nth-child(even) {
     background-color: #f1f1f1;
 }
 #table1 .unitTable tbody td {
