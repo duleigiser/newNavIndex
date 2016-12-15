@@ -305,7 +305,8 @@ function prearData(data, columns, table, diff) {
 }
 
 function getColumnValue(table, column, columnValue) {
-    if (table == "baojingTable") {
+    console.log(table)
+    if (table == "alarm") {
         if (column == 'W_LEVEL') {
             switch (columnValue) {
                 case '1':
