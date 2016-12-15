@@ -5,7 +5,7 @@ var colorArr2 = ["white","white","white"];
 marquee();
 //滚动文字函数
 function marquee() {
-    var url = ctx+"/portal/getdmyFDL.do";
+    var url = ctx+"/jsjd/portal/getdmyFDL.do";
     $.ajax({
         url: url,
         dataType: "json",
@@ -33,9 +33,9 @@ setInterval(function () {
     $(".time").html(timeStr);
 },1000);
 //圆环颜色
-setInterval(function(){
+function circleColor(){
     $.ajax({
-        url: ctx + "/portal/getQuotaList.do?orgid=" + $("#org").val(),
+        url: ctx + "/jsjd/portal/getQuotaList.do?orgid=" + $("#org").val(),
         dataType: "json",
         success: function(data) {
             data.each(function(){
@@ -46,7 +46,7 @@ setInterval(function(){
                     colorArr1[code] = "green";
                 }
             });
-            if (colorArr1 != colorArr2) {
+            if (colorArr1.join("") != colorArr2.join("")) {
                 $(function () {
                     var cha = new Highcharts.Chart({
                         chart: {
@@ -165,11 +165,11 @@ setInterval(function(){
             colorArr2 = colorArr2;
         }
     });
-},10000);
+}
 //机组连续运行天数
-setInterval(function(){
+function consecDays(){
     $.ajax({
-        url: ctx + "/portal.do",
+        url: ctx + "/jsjd/portal.do",
         type: "POST",
         data: {method: "getJzqtNumByOrgid",orgid: $("#org").val()},
         success: function(data) {
@@ -179,11 +179,11 @@ setInterval(function(){
             }
         }
     });
-},10000);
+}
 //table1内容
-setInterval(function(){
+function index(){
     $.ajax({
-        url: "/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
+        url: ctx + "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
         success: function(data) {
             var d = data.slice(3);
             var str = "";
@@ -201,16 +201,43 @@ setInterval(function(){
             $(".unitTable tbody").html(str);
         }
     });
-},10000);
+}
 //table2内容
-setInterval(function(){
-    
-},10000);
+function indexRanking(){
+    $.ajax({
+        url:ctx+"/zbpm.do?method=getZbpm&org_id="+$("#org").val()+"&flag=0",
+	    type:"GET",
+        success: function(data) {
+            var flag = true;
+		    var ev1 = eval("("+data+")");
+            if (ev1[0].mark == success && flag) {
+                var str = "";
+                $.ajax({
+                    url:ctx+"/zbpm.do?method=getZbpm&org_id="+$("#org").val()+"&flag=1",
+			  		type:"GET",
+                    success:function(data){
+                        var ev2=eval("("+data+")");
+                        str = appendTr("综合供电气耗<br>(g/kW.h)",ev1[1].ZHGDMH_val,ev1[1].ZHGDMH_p,ev2[1].ZHGDMH_val,ev2[1].ZHGDMH_p)
+                            + appendTr("发电厂用电率<br>(%)",ev1[2].ZHGDMH_val,ev1[2].ZHGDMH_p,ev2[2].ZHGDMH_val,ev2[2].ZHGDMH_p)
+                            + appendTr("综合厂用电率<br>(%)",ev1[3].ZHGDMH_val,ev1[3].ZHGDMH_p,ev2[3].ZHGDMH_val,ev2[3].ZHGDMH_p)
+                            + appendTr("机组负荷率<br>(%)",ev1[4].ZHGDMH_val,ev1[4].ZHGDMH_p,ev2[4].ZHGDMH_val,ev2[4].ZHGDMH_p)
+                            + appendTr("补水率<br>(%)",ev1[5].ZHGDMH_val,ev1[5].ZHGDMH_p,ev2[5].ZHGDMH_val,ev2[5].ZHGDMH_p)
+                        $("#table2 table>tbody").html(str);    
+                    }
+                });
+            }
+        }
+    });
+}
 //报警列表更多选项链接
 var moreURL = ctx + "jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
 $("#table3 .more").prop("href",moreURL);
 //var url = ctx + "jsjd/main?xwl=23WPD5TO7GWR";
 //函数体
+function appendTr(text,ev1Val,ev1P,ev2Val,ev2P) {
+    var str = "<tr><td>" + text + "</td><td>" + ev1Val.toFixed(2) + "</td><td>" + ev1P + "</td><td>" + ev2Val.toFixed(2) + "</td><td>" + ev2P + "</td></tr>";
+    return str;
+}
 function ajax(url, tableId, columns, diff) {
 	$.ajax({
 		url : url,
