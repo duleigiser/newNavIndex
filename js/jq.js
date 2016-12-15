@@ -17,14 +17,14 @@ var colorArr2 = ["white", "white", "white"];
 
 //滚动文字函数
 function marquee() {
-    var url = ctx + "/portal/getdmyFDL.do";
+    var url = ctx + "/jsjd/portal/getdmyFDL.do";
     $.ajax({
         url: url,
         dataType: "json",
         success: function (data) {
             var scrollStr = "<ul class=\"content\">";
             for (var i = 0; i < data.length; i++) {
-                scrollStr += "<li><em>" + data[i].ORGNAME + "</em><em>日发电量最高&nbsp;" + data[i].DAYVALUE + "万KWh</em><em>" + data[i].DAYDATE + "</em><em>月发电量最高&nbsp;" + d[0].MONTHVALUE + "亿kWh</em><em>" + d[0].MONTHDATE + "</em></li>";
+                scrollStr += "<li><em>" + data[i].ORGNAME + "</em><em>日发电量最高&nbsp;" + data[i].DAYVALUE + "万KWh</em><em>" + data[i].DAYDATE + "</em><em>月发电量最高&nbsp;" + data[0].MONTHVALUE + "亿kWh</em><em>" + data[0].MONTHDATE + "</em></li>";
             }
             scrollStr += "</ul>";
             $(".scrollText").html(scrollStr);
@@ -37,7 +37,7 @@ function marquee() {
                         marginTop: "0px"
                     }).find("li:first").appendTo(this);
                 });
-            }, 3000);
+            }, 10000);
         }
     });
 }
@@ -45,13 +45,13 @@ function marquee() {
 setInterval(function () {
     var timeStr = showLocale();
     $(".time").html(timeStr);
-}, 1000);
+}, 100000);
 //圆环颜色
 
 
 setInterval(function () {
     $.ajax({
-        url: ctx + "/portal/getQuotaList.do?orgid=" + $("#org").val(),
+        url: ctx + "/jsjd/portal/getQuotaList.do?orgid=" + $("#org").val(),
         dataType: "json",
         success: function (data) {
             data.each(function () {
@@ -181,11 +181,11 @@ setInterval(function () {
             colorArr2 = colorArr2;
         }
     });
-}, 10000);
+}, 1000000);
 //机组连续运行天数
 setInterval(function () {
     $.ajax({
-        url: ctx + "/portal.do",
+        url: ctx + "/jsjd/portal.do",
         type: "POST",
         data: {
             method: "getJzqtNumByOrgid",
@@ -198,11 +198,11 @@ setInterval(function () {
             }
         }
     });
-}, 10000);
+}, 1000000);
 //table1内容
 setInterval(function () {
     $.ajax({
-        url: "/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
+        url: "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
         success: function (data) {
             var d = data.slice(3);
             var str = "";
@@ -220,13 +220,13 @@ setInterval(function () {
             $(".unitTable tbody").html(str);
         }
     });
-}, 10000);
+}, 1000000);
 //table2内容
 setInterval(function () {
 
-}, 10000);
+}, 1000000);
 //报警列表更多选项链接
-var moreURL = ctx + "jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
+var moreURL = ctx + "/jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
 $("#table3 .more").prop("href", moreURL);
 //var url = ctx + "jsjd/main?xwl=23WPD5TO7GWR";
 //函数体
