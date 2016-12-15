@@ -1,18 +1,34 @@
 var ctx = _ctx();
 var _scrollHeight = $(".content>li").height();
-var colorArr1 = ["red","red","red"];
-var colorArr2 = ["white","white","white"];
-marquee();
+var colorArr1 = ["red", "red", "red"];
+var colorArr2 = ["white", "white", "white"];
+
+(function init() {
+    marquee();
+    $("#org").on("change", function () {
+        if (this.value !== "4961c78b-178d-423e-bec4-453fc11262cd") {
+            window.location.href = "test.html"
+        }
+    })
+
+})()
+
+
+
 //滚动文字函数
 function marquee() {
+<<<<<<< HEAD
     var url = ctx+"/jsjd/portal/getdmyFDL.do";
+=======
+    var url = ctx + "/jsjd/portal/getdmyFDL.do";
+>>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
     $.ajax({
         url: url,
         dataType: "json",
-        success: function(data) {
+        success: function (data) {
             var scrollStr = "<ul class=\"content\">";
             for (var i = 0; i < data.length; i++) {
-                scrollStr += "<li><em>" + data[i].ORGNAME + "</em><em>日发电量最高&nbsp;" + data[i].DAYVALUE + "万KWh</em><em>" + data[i].DAYDATE + "</em><em>月发电量最高&nbsp;"+d[0].MONTHVALUE+"亿kWh</em><em>"+d[0].MONTHDATE+"</em></li>"; 
+                scrollStr += "<li><em>" + data[i].ORGNAME + "</em><em>日发电量最高&nbsp;" + data[i].DAYVALUE + "万KWh</em><em>" + data[i].DAYDATE + "</em><em>月发电量最高&nbsp;" + data[0].MONTHVALUE + "亿kWh</em><em>" + data[0].MONTHDATE + "</em></li>";
             }
             scrollStr += "</ul>";
             $(".scrollText").html(scrollStr);
@@ -20,10 +36,12 @@ function marquee() {
             setInterval(function () {
                 $(".content").animate({
                     marginTop: "-" + _scrollHeight + "px"
-                },500,function () {
-                    $(this).css({marginTop: "0px"}).find("li:first").appendTo(this);
+                }, 500, function () {
+                    $(this).css({
+                        marginTop: "0px"
+                    }).find("li:first").appendTo(this);
                 });
-            },3000);
+            }, 10000);
         }
     });
 }
@@ -31,14 +49,20 @@ function marquee() {
 setInterval(function () {
     var timeStr = showLocale();
     $(".time").html(timeStr);
-},1000);
+}, 100000);
 //圆环颜色
+<<<<<<< HEAD
 function circleColor(){
+=======
+
+
+setInterval(function () {
+>>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
     $.ajax({
         url: ctx + "/jsjd/portal/getQuotaList.do?orgid=" + $("#org").val(),
         dataType: "json",
-        success: function(data) {
-            data.each(function(){
+        success: function (data) {
+            data.each(function () {
                 var code = Number(this.jzm_code) - 1;
                 if (this.yxzt) {
                     colorArr1[code] = "red";
@@ -51,7 +75,7 @@ function circleColor(){
                     var cha = new Highcharts.Chart({
                         chart: {
                             //将图表放进id为container的容器内
-                            renderTo: 'container', 
+                            renderTo: 'container',
                             plotBackgroundColor: null,
                             plotBorderWidth: 0,
                             plotShadow: false
@@ -60,8 +84,8 @@ function circleColor(){
                         credits: {
                             enabled: false
                         },
-                        colors:  colorArr1,
-                        
+                        colors: colorArr1,
+
                         //去掉导出的按钮
                         exporting: {
                             buttons: {
@@ -109,9 +133,9 @@ function circleColor(){
                             y: 50
                         },
                         tooltip: {
-                            pointFormatter: function() {
+                            pointFormatter: function () {
                                 //this表示鼠标悬浮选中的机组
-                                return  this.x+'负荷: <b>'+this.y+'</b>'
+                                return this.x + '负荷: <b>' + this.y + '</b>'
                             }
                         },
                         plotOptions: {
@@ -165,33 +189,51 @@ function circleColor(){
             colorArr2 = colorArr2;
         }
     });
+<<<<<<< HEAD
 }
 //机组连续运行天数
 function consecDays(){
+=======
+}, 1000000);
+//机组连续运行天数
+setInterval(function () {
+>>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
     $.ajax({
         url: ctx + "/jsjd/portal.do",
         type: "POST",
-        data: {method: "getJzqtNumByOrgid",orgid: $("#org").val()},
-        success: function(data) {
+        data: {
+            method: "getJzqtNumByOrgid",
+            orgid: $("#org").val()
+        },
+        success: function (data) {
             var d = data.pagedata;
             for (var i = 0; i < d.length; i++) {
-                $(".topText a:eq("+(i+1)+")").html(d[i].DAYS+"天");
+                $(".topText a:eq(" + (i + 1) + ")").html(d[i].DAYS + "天");
             }
         }
     });
+<<<<<<< HEAD
 }
 //table1内容
 function index(){
     $.ajax({
         url: ctx + "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
         success: function(data) {
+=======
+}, 1000000);
+//table1内容
+setInterval(function () {
+    $.ajax({
+        url: "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
+        success: function (data) {
+>>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
             var d = data.slice(3);
             var str = "";
             for (var i = 0; i < 7; i++) {
                 str += "<tr>";
                 for (var j = 0; j < 6; j += 2) {
-                    if (d[i*7+j]) {
-                        str += "<td>" + d[i*7+j].QUOTA_NAME + "</td><td>" + d[i*7+j].VALUEDATE + d[i*7+j].UNIT + "</td>";
+                    if (d[i * 7 + j]) {
+                        str += "<td>" + d[i * 7 + j].QUOTA_NAME + "</td><td>" + d[i * 7 + j].VALUEDATE + d[i * 7 + j].UNIT + "</td>";
                     } else {
                         str += "<td></td><td></td>";
                     }
@@ -201,6 +243,7 @@ function index(){
             $(".unitTable tbody").html(str);
         }
     });
+<<<<<<< HEAD
 }
 //table2内容
 function indexRanking(){
@@ -229,9 +272,16 @@ function indexRanking(){
         }
     });
 }
+=======
+}, 1000000);
+//table2内容
+setInterval(function () {
+
+}, 1000000);
+>>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
 //报警列表更多选项链接
-var moreURL = ctx + "jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
-$("#table3 .more").prop("href",moreURL);
+var moreURL = ctx + "/jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
+$("#table3 .more").prop("href", moreURL);
 //var url = ctx + "jsjd/main?xwl=23WPD5TO7GWR";
 //函数体
 function appendTr(text,ev1Val,ev1P,ev2Val,ev2P) {
@@ -239,91 +289,93 @@ function appendTr(text,ev1Val,ev1P,ev2Val,ev2P) {
     return str;
 }
 function ajax(url, tableId, columns, diff) {
-	$.ajax({
-		url : url,
-		dataType : "json",
-		success : function(data) {
-			var tableHtml = '';
-			if(data!=="[]"&&data.pagedata){
-				if(data.pagedata.length>0 ){
-					tableHtml = prearData(data.pagedata, columns, tableId, diff);
-				}
-			}else{
-				if(data.length!==0){
-					tableHtml = prearData(data, columns, tableId, diff);
-				}
-				
-			}									
-			$("#" + tableId).html(tableHtml);
-			styleTable("#" + tableId);
-		},
-		
-	});
+    $.ajax({
+        url: url,
+        dataType: "json",
+        success: function (data) {
+            var tableHtml = '';
+            if (data !== "[]" && data.pagedata) {
+                if (data.pagedata.length > 0) {
+                    tableHtml = prearData(data.pagedata, columns, tableId, diff);
+                }
+            } else {
+                if (data.length !== 0) {
+                    tableHtml = prearData(data, columns, tableId, diff);
+                }
+
+            }
+            $("#" + tableId).html(tableHtml);
+            styleTable("#" + tableId);
+        },
+
+    });
 }
-function prearData(data, columns, table,diff) {
-	var htmlArray = new Array();
-	var min = 10;
-	for (var i = 0; i < min; i++) {
-		var d = data[i];
-		htmlArray.push("<tr>");
-		for (var j = 0; j < columns.length; j++) {
-			var columnValue = getColumnValue(table, columns[j], d[columns[j]]);
-			if(table == "table3"){
-				htmlArray.push("<td align='left' class='ellipsis' ><a  title=\"" + columnValue + "\" href='#' >" + columnValue + "</a></td>");
-			}
-		}
-		htmlArray.push("</tr>");
-	}
-	return htmlArray.join('');
+
+function prearData(data, columns, table, diff) {
+    var htmlArray = new Array();
+    var min = 10;
+    for (var i = 0; i < min; i++) {
+        var d = data[i];
+        htmlArray.push("<tr>");
+        for (var j = 0; j < columns.length; j++) {
+            var columnValue = getColumnValue(table, columns[j], d[columns[j]]);
+            if (table == "table3") {
+                htmlArray.push("<td align='left' class='ellipsis' ><a  title=\"" + columnValue + "\" href='#' >" + columnValue + "</a></td>");
+            }
+        }
+        htmlArray.push("</tr>");
+    }
+    return htmlArray.join('');
 }
+
 function getColumnValue(table, column, columnValue) {
-	if(table == "baojingTable"){
-		if (column == 'W_LEVEL') {
-			switch (columnValue) {
-			case '1':
-				columnValue='班组';
-				break;
-			case '2':
-				columnValue='部门';
-				break;
-			case '3':
-				columnValue='电厂';
-				break;
-			case '4':
-				columnValue='集团';
-				break;
-			default:
-				columnValue='';
-				break;
-			}
-		}
-	}
-	return columnValue;
+    if (table == "baojingTable") {
+        if (column == 'W_LEVEL') {
+            switch (columnValue) {
+                case '1':
+                    columnValue = '班组';
+                    break;
+                case '2':
+                    columnValue = '部门';
+                    break;
+                case '3':
+                    columnValue = '电厂';
+                    break;
+                case '4':
+                    columnValue = '集团';
+                    break;
+                default:
+                    columnValue = '';
+                    break;
+            }
+        }
+    }
+    return columnValue;
 }
+
 function showLocale() {
     var myDate = new Date();
     var year = myDate.getFullYear();
-    var month = myDate.getMonth()+1;
+    var month = myDate.getMonth() + 1;
     var day = myDate.getDate();
     var hour = myDate.getHours();
     var minute = myDate.getMinutes();
     var second = myDate.getSeconds();
-    if (month<10) {
+    if (month < 10) {
         month = "0" + month;
     }
-    if (day<10) {
+    if (day < 10) {
         day = "0" + day;
     }
-    if (hour<10) {
+    if (hour < 10) {
         hour = "0" + hour;
     }
-    if (minute<10) {
+    if (minute < 10) {
         minute = "0" + minute;
     }
-    if (second<10) {
+    if (second < 10) {
         second = "0" + second;
     }
     var str = year + "年" + month + "月" + day + "日" + " " + hour + ":" + minute + ":" + second;
     return str;
 }
-
