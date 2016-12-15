@@ -18,7 +18,7 @@ var colorArr2 = ["white", "white", "white"];
 function alarm(){
     
     var url = ctx + "/jsjd/portal/warningMessageList.do?orgid=" + $("#org").val() + "&pagenum=1&pagesize=5&ispage=true&unit_status=1";
-    ajax(url,"alarm",["ORG_NAME","PI_CODE","W_VALUE","W_LEVEL","W_DATE","W_TIME","SPEC_ID"]);
+    ajax(url,"alarm",["PI_CODE","T_P_NAME","W_VALUE","W_LEVEL","W_DATE","W_TIME","SPEC_ID"]);
 }
 
 //滚动文字函数

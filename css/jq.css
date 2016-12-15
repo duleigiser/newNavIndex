@@ -260,3 +260,10 @@ select {
 .subject {
     width: 10%;
 }
+#alarm a {
+    color: black;
+    font-weight: normal;
+}
+#alarm tr td:nth-child(1), #alarm tr td:nth-child(2) {
+    text-align: left;
+}
