@@ -232,10 +232,14 @@ select {
     width: 20%;
     padding: 0 4px;
 }
+#table2 .tab-content tbody td {
+    text-align: center;
+}
 #table2 .tab-content tbody td:first-child {
     background-color: #f1f1f1;
     font-size: 12px;
     height: 39px;
+    text-align: left;
 }
 #table3 {
     width: 98%;
