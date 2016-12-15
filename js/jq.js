@@ -244,10 +244,10 @@ function indexRanking(){
                     success:function(data){
                         var ev2=eval("("+data+")");
                         str = appendTr("综合供电气耗<br>(g/kW.h)",ev1[1].ZHGDMH_val,ev1[1].ZHGDMH_p,ev2[1].ZHGDMH_val,ev2[1].ZHGDMH_p)
-                            + appendTr("发电厂用电率<br>(%)",ev1[2].ZHGDMH_val,ev1[2].ZHGDMH_p,ev2[2].ZHGDMH_val,ev2[2].ZHGDMH_p)
-                            + appendTr("综合厂用电率<br>(%)",ev1[3].ZHGDMH_val,ev1[3].ZHGDMH_p,ev2[3].ZHGDMH_val,ev2[3].ZHGDMH_p)
-                            + appendTr("机组负荷率<br>(%)",ev1[4].ZHGDMH_val,ev1[4].ZHGDMH_p,ev2[4].ZHGDMH_val,ev2[4].ZHGDMH_p)
-                            + appendTr("补水率<br>(%)",ev1[5].ZHGDMH_val,ev1[5].ZHGDMH_p,ev2[5].ZHGDMH_val,ev2[5].ZHGDMH_p)
+                            + appendTr("发电厂用电率<br>(%)",ev1[2].CHYDL_val,ev1[2].CHYDL_p,ev2[2].CHYDL_val,ev2[2].CHYDL_p)
+                            + appendTr("综合厂用电率<br>(%)",ev1[3].ZHCHYDL_val,ev1[3].ZHCHYDL_p,ev2[3].ZHCHYDL_val,ev2[3].ZHCHYDL_p)
+                            + appendTr("机组负荷率<br>(%)",ev1[4].JZFHL_val,ev1[4].JZFHL_p,ev2[4].JZFHL_val,ev2[4].JZFHL_p)
+                            + appendTr("补水率<br>(%)",ev1[5].BSHL_val,ev1[5].BSHL_p,ev2[5].BSHL_val,ev2[5].BSHL_p)
                         $("#table2 table>tbody").html(str);    
                     }
                 });
