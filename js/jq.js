@@ -17,9 +17,7 @@ var colorArr2 = ["white", "white", "white"];
 
 //滚动文字函数
 function marquee() {
-
-    var url = ctx+"/jsjd/portal/getdmyFDL.do";
-
+    var url = ctx + "/jsjd/portal/getdmyFDL.do";
     $.ajax({
         url: url,
         dataType: "json",
@@ -49,6 +47,7 @@ setInterval(function () {
     $(".time").html(timeStr);
 }, 100000);
 //圆环颜色
+
 function circleColor(){
 
     $.ajax({
@@ -185,7 +184,6 @@ function circleColor(){
 }
 //机组连续运行天数
 function consecDays(){
-
     $.ajax({
         url: ctx + "/jsjd/portal.do",
         type: "POST",
@@ -223,7 +221,6 @@ function index(){
             $(".unitTable tbody").html(str);
         }
     });
-
 }
 //table2内容
 function indexRanking(){
