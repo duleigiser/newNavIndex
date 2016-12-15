@@ -10,10 +10,16 @@ var colorArr2 = ["white", "white", "white"];
             window.location.href = "test.html"
         }
     })
+    alarm();
 
 })()
 
-
+//table3内容
+function alarm(){
+    
+    var url = ctx + "/jsjd/portal/warningMessageList.do?orgid=" + $("#org").val() + "&pagenum=1&pagesize=5&ispage=true&unit_status=1";
+    ajax(url,"alarm",["ORG_NAME","PI_CODE","W_VALUE","W_LEVEL","W_DATE","W_TIME","SPEC_ID"]);
+}
 
 //滚动文字函数
 function marquee() {
@@ -249,11 +255,7 @@ function indexRanking(){
         }
     });
 }
-//table3内容
-function alarm(unit_status){
-    var url = ctx + "/jsjd/portal/warningMessageList.do?orgid=" + $("#org").val() + "&pagenum=1&pagesize=5&ispage=true&unit_status="+unit_status;
-    ajax(url,table3,["ORG_NAME","PI_CODE","W_VALUE","W_LEVEL","W_DATE","W_TIME","SPEC_ID"]);
-}
+
 //报警列表更多选项链接
 var moreURL = ctx + "/jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
 $("#table3 .more").prop("href", moreURL);
@@ -271,28 +273,29 @@ function ajax(url, tableId, columns, diff) {
             var tableHtml = '';
             if (data !== "[]" && data.pagedata) {
                 if (data.pagedata.length > 0) {
-                    tableHtml = prearData(data.pagedata, columns, tableId, diff);
+                    tableHtml = prearData(data.pagedata, columns, tableId);
                 }
             } else {
                 if (data.length !== 0) {
-                    tableHtml = prearData(data, columns, tableId, diff);
+                    tableHtml = prearData(data, columns, tableId);
                 }
             }
-            $("#" + tableId + " #cdbj>table>tbody").html(tableHtml);
-            styleTable("#" + tableId);
+            $("#" + tableId ).html(tableHtml);
+            //styleTable("#" + tableId);
         },
     });
 }
 
 function prearData(data, columns, table, diff) {
     var htmlArray = new Array();
-    var min = 10;
-    for (var i = 0; i < min; i++) {
+    var min;
+    (data.length)>10? min=data.length:min=10
+    for (var i = 0; i < data.length; i++) {
         var d = data[i];
         htmlArray.push("<tr>");
         for (var j = 0; j < columns.length; j++) {
             var columnValue = getColumnValue(table, columns[j], d[columns[j]]);
-            if (table == "table3") {
+            if (table == "alarm") {
                 htmlArray.push("<td align='' class='ellipsis' ><a  title=\"" + columnValue + "\" href='#' >" + columnValue + "</a></td>");
             }
         }
