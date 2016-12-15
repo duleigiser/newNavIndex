@@ -17,11 +17,9 @@ var colorArr2 = ["white", "white", "white"];
 
 //滚动文字函数
 function marquee() {
-<<<<<<< HEAD
+
     var url = ctx+"/jsjd/portal/getdmyFDL.do";
-=======
-    var url = ctx + "/jsjd/portal/getdmyFDL.do";
->>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
+
     $.ajax({
         url: url,
         dataType: "json",
@@ -51,13 +49,8 @@ setInterval(function () {
     $(".time").html(timeStr);
 }, 100000);
 //圆环颜色
-<<<<<<< HEAD
 function circleColor(){
-=======
 
-
-setInterval(function () {
->>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
     $.ajax({
         url: ctx + "/jsjd/portal/getQuotaList.do?orgid=" + $("#org").val(),
         dataType: "json",
@@ -189,15 +182,10 @@ setInterval(function () {
             colorArr2 = colorArr2;
         }
     });
-<<<<<<< HEAD
 }
 //机组连续运行天数
 function consecDays(){
-=======
-}, 1000000);
-//机组连续运行天数
-setInterval(function () {
->>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
+
     $.ajax({
         url: ctx + "/jsjd/portal.do",
         type: "POST",
@@ -212,21 +200,13 @@ setInterval(function () {
             }
         }
     });
-<<<<<<< HEAD
+
 }
 //table1内容
 function index(){
     $.ajax({
         url: ctx + "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
         success: function(data) {
-=======
-}, 1000000);
-//table1内容
-setInterval(function () {
-    $.ajax({
-        url: "/jsjd/portal/getIndex.do?orgid=" + $("#org").val() + "&position=2",
-        success: function (data) {
->>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
             var d = data.slice(3);
             var str = "";
             for (var i = 0; i < 7; i++) {
@@ -243,7 +223,7 @@ setInterval(function () {
             $(".unitTable tbody").html(str);
         }
     });
-<<<<<<< HEAD
+
 }
 //table2内容
 function indexRanking(){
@@ -272,13 +252,11 @@ function indexRanking(){
         }
     });
 }
-=======
-}, 1000000);
-//table2内容
-setInterval(function () {
-
-}, 1000000);
->>>>>>> 5c5a5b1c2e259d8ad8d53708544bdb3fc1e6bf8a
+//table3内容
+function alarm(unit_status){
+    var url = ctx + "/jsjd/portal/warningMessageList.do?orgid=" + $("#org").val() + "&pagenum=1&pagesize=5&ispage=true&unit_status="+unit_status;
+    ajax(url,table3,["ORG_NAME","PI_CODE","W_VALUE","W_LEVEL","W_DATE","W_TIME","SPEC_ID"]);
+}
 //报警列表更多选项链接
 var moreURL = ctx + "/jsjd/main?xwl=23WPD5TO7GWR?orgId=4961c78b-178d-423e-bec4-453fc11262cd";
 $("#table3 .more").prop("href", moreURL);
@@ -302,12 +280,10 @@ function ajax(url, tableId, columns, diff) {
                 if (data.length !== 0) {
                     tableHtml = prearData(data, columns, tableId, diff);
                 }
-
             }
-            $("#" + tableId).html(tableHtml);
+            $("#" + tableId + " #cdbj>table>tbody").html(tableHtml);
             styleTable("#" + tableId);
         },
-
     });
 }
 
@@ -320,7 +296,7 @@ function prearData(data, columns, table, diff) {
         for (var j = 0; j < columns.length; j++) {
             var columnValue = getColumnValue(table, columns[j], d[columns[j]]);
             if (table == "table3") {
-                htmlArray.push("<td align='left' class='ellipsis' ><a  title=\"" + columnValue + "\" href='#' >" + columnValue + "</a></td>");
+                htmlArray.push("<td align='' class='ellipsis' ><a  title=\"" + columnValue + "\" href='#' >" + columnValue + "</a></td>");
             }
         }
         htmlArray.push("</tr>");
