@@ -37,7 +37,7 @@ function _ctx() {
  *     return => {a:b,c:d} 
  */
 function _GetRequest(url) {
-    if(url.indexOf("?")<0){
+    if (url.indexOf("?") < 0) {
         return;
     }
     url = url.split('?')[1]; //获取url中"?"符后的字串
@@ -49,3 +49,72 @@ function _GetRequest(url) {
     return theRequest;
 }
 
+/**
+ * 二次封装ajax
+ * @url: 请求地址
+ * @tableId:请求地址
+ * @column: 列字段
+ */
+function _ajax(url, tableId, columns) {
+    $.ajax({
+        url: url,
+        dataType: "json",
+        success: function (data) {
+            var tableHtml = '';
+            if (data !== "[]" && data.pagedata) {
+                if (data.pagedata.length > 0) {
+                    tableHtml = predata(data.pagedata, columns, tableId);
+                }
+            } else {
+                tableHtml = predata(data, columns, tableId);
+            }
+            $("#" + tableId).html(tableHtml);
+        }
+    });
+}
+
+
+/**
+ * 
+ * 
+ **/
+
+
+function _predata(data, columns, table) {
+    var htmlArray = [];
+    var d="";
+    for (var i = 0; i < data.length; i++) {
+        d = data[i];
+        htmlArray.push("<tr>");
+        for (var j = 0; j < columns.length; j++) {
+            var columnValue = getColumnValue(table, columns[j], d[columns[j]]);
+            htmlArray.push("<td class='overflow'><a title=" + columnValue + ">" + columnValue + "</a></td>");
+        }
+        htmlArray.push("</tr>");
+    }
+    return htmlArray.join('');
+}
+function _getColumnValue(table, column, columnValue) {
+	if(table == "baojingTable"){
+		if (column == 'W_LEVEL') {
+			switch (columnValue) {
+			case '1':
+				columnValue='班组';
+				break;
+			case '2':
+				columnValue='部门';
+				break;
+			case '3':
+				columnValue='电厂';
+				break;
+			case '4':
+				columnValue='集团';
+				break;
+			default:
+				columnValue='';
+				break;
+			}
+		}
+	}
+	return columnValue;
+}

@@ -45,3 +45,4 @@ jspm_packages
 .yarn-integrity
 
 lib
+test.html
